@@ -4,10 +4,11 @@ test.beforeEach(async ({ page }) => {
   await page.goto('https://jqueryui.com/');
 });
 
+
 test.describe('Pratice Testing', () => {
 
   test('JQuery UI', async ({ page }) => {
-
+    // test.setTimeout(40000);
     // await page.goto('https://jqueryui.com/');
     // await page.getByRole('link', { name: 'JQuery UI', exact: true }).click();
     // await page.locator('iframe[name="aswift_9"]').contentFrame().getByLabel('Close ad').click();
@@ -917,7 +918,6 @@ test.describe('Pratice Testing', () => {
     await expect(page.locator('iframe').contentFrame().locator('#tabs-1')).toContainText('Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.');
     await page.locator('iframe').contentFrame().getByRole('link', { name: 'Proin dolor' }).click();
     await page.locator('iframe').contentFrame().getByRole('link', { name: 'Aenean lacinia' }).click();
-
   });
 
 
