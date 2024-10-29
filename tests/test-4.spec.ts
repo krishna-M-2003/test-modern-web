@@ -877,5 +877,24 @@ test.describe('Pratice Testing', () => {
     await page.locator('iframe').contentFrame().getByRole('combobox', { name: 'Blue' }).locator('span').first().click();
     await page.locator('iframe').contentFrame().getByRole('option', { name: 'Green' }).click();
   });
+
+  test('Widgets Spinner', async ({ page }) => {
+    
+  await expect(page.getByRole('link', { name: 'Spinner' })).toBeVisible();
+  await page.getByRole('link', { name: 'Spinner' }).click();
+  await expect(page.locator('iframe').contentFrame().getByLabel('Select a value:')).toBeVisible();
+  await expect(page.locator('iframe').contentFrame().getByRole('button', { name: 'Toggle disable/enable' })).toBeVisible();
+  await expect(page.locator('iframe').contentFrame().getByRole('button', { name: 'Toggle widget' })).toBeVisible();
+  await expect(page.locator('iframe').contentFrame().getByRole('button', { name: 'Get value' })).toBeVisible();
+  await expect(page.locator('iframe').contentFrame().getByRole('button', { name: 'Set value to' })).toBeVisible();
+  await page.locator('iframe').contentFrame().getByRole('button', { name: 'Toggle disable/enable' }).click();
+  await page.locator('iframe').contentFrame().getByRole('button', { name: 'Toggle widget' }).click();
+  await page.locator('iframe').contentFrame().getByRole('button', { name: 'Get value' }).click();
+  await page.locator('iframe').contentFrame().getByRole('button', { name: 'Set value to' }).click();
+  await page.locator('iframe').contentFrame().getByRole('button', { name: 'Toggle disable/enable' }).click();
+  await page.locator('iframe').contentFrame().getByRole('button', { name: 'Toggle widget' }).click();
+  await page.locator('iframe').contentFrame().getByRole('button', { name: 'Set value to' }).click();
+  await page.locator('iframe').contentFrame().getByRole('button', { name: 'Toggle disable/enable' }).click();
+  });
 });
 
