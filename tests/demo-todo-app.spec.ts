@@ -434,4 +434,5 @@ async function checkTodosInLocalStorage(page: Page, title: string) {
   return await page.waitForFunction(t => {
     return JSON.parse(localStorage['react-todos']).map((todo: any) => todo.title).includes(t);
   }, title);
+  // Create 2nd todo.
 }
