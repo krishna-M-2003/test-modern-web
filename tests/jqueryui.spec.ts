@@ -1154,6 +1154,6 @@ test.describe('Pratice Testing', () => {
     await page.locator('iframe').contentFrame().locator('#my-widget2').getByRole('button', { name: 'change' }).click();
     await page.locator('iframe').contentFrame().locator('#my-widget1').getByRole('button', { name: 'change' }).click();
     await page.locator('iframe').contentFrame().getByRole('button', { name: 'Go green' }).click();
-  })
+  });
 });
 
