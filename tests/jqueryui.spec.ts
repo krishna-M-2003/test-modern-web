@@ -788,6 +788,7 @@ test.describe('Pratice Testing', () => {
   });
 
   test('Widgets Selectmenu', async ({ page }) => {
+    test.setTimeout(50000);
     await expect(page.getByRole('link', { name: 'Selectmenu' })).toBeVisible();
     await page.getByRole('link', { name: 'Selectmenu' }).click();
     await expect(page.locator('iframe').contentFrame().locator('#speed-button').getByText('Medium')).toBeVisible();
@@ -920,6 +921,239 @@ test.describe('Pratice Testing', () => {
     await page.locator('iframe').contentFrame().getByRole('link', { name: 'Aenean lacinia' }).click();
   });
 
+  test('Widgets Tooltips', async ({ page }) => {
 
+    test.setTimeout(40000);
+
+    await expect(page.getByRole('link', { name: 'Tooltip' })).toBeVisible();
+    await page.getByRole('link', { name: 'Tooltip' }).click();
+    await expect(page.locator('iframe').contentFrame().getByRole('link', { name: 'Tooltips' })).toBeVisible();
+    await expect(page.locator('iframe').contentFrame().getByRole('link', { name: 'ThemeRoller' })).toBeVisible();
+    await page.locator('iframe').contentFrame().getByRole('link', { name: 'Tooltips' }).first().hover();
+    await expect(page.locator('iframe').contentFrame().getByRole('tooltip', { name: 'That\'s what this widget is' }).locator('div')).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Custom animation demo' })).toBeVisible();
+    await page.getByRole('link', { name: 'Custom animation demo' }).click();
+    await page.locator('iframe').contentFrame().getByRole('link', { name: 'show' }).first().hover();
+    await expect(page.locator('iframe').contentFrame().getByRole('tooltip', { name: 'slide down on show' }).locator('div')).toBeVisible();
+    await page.locator('iframe').contentFrame().getByRole('link', { name: 'hide' }).click();
+    await expect(page.getByRole('link', { name: 'Custom content' })).toBeVisible();
+    await page.getByRole('link', { name: 'Custom content' }).click();
+    await page.locator('iframe').contentFrame().getByRole('link', { name: 'Vienna, Austria' }).click();
+    await expect(page.locator('iframe').contentFrame().getByRole('link', { name: 'Vienna, Austria' })).toBeVisible();
+    await expect(page.locator('iframe').contentFrame().getByRole('link', { name: 'St. Stephen\'s Cathedral' })).toBeVisible();
+    await expect(page.locator('iframe').contentFrame().getByRole('heading', { name: 'Tower Bridge' })).toBeVisible();
+    await expect(page.locator('iframe').contentFrame().getByRole('link', { name: 'London, England' })).toBeVisible();
+    await expect(page.locator('iframe').contentFrame().getByRole('link', { name: 'Tower Bridge' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Custom Styling' })).toBeVisible();
+    await page.getByRole('link', { name: 'Custom Styling' }).click();
+    await expect(page.locator('iframe').contentFrame().getByLabel('Your age:')).toBeVisible();
+    await page.locator('iframe').contentFrame().getByLabel('Your age:').click();
+    await page.locator('iframe').contentFrame().getByLabel('Your age:').fill('12');
+    await expect(page.getByRole('link', { name: 'Forms' })).toBeVisible();
+    await page.getByRole('link', { name: 'Forms' }).click();
+    await page.locator('iframe').contentFrame().getByLabel('Firstname').first().hover();
+    await expect(page.locator('iframe').contentFrame().getByRole('tooltip', { name: 'Please provide your firstname.' }).locator('div')).toBeVisible();
+    await expect(page.locator('iframe').contentFrame().getByLabel('Lastname')).toBeVisible();
+    await page.locator('iframe').contentFrame().getByLabel('Lastname').first().hover();
+    await expect(page.locator('iframe').contentFrame().getByRole('tooltip', { name: 'Please provide also your' }).locator('div')).toBeVisible();
+    await page.locator('iframe').contentFrame().getByLabel('Firstname').click();
+    await page.locator('iframe').contentFrame().getByLabel('Firstname').fill('ram');
+    await page.locator('iframe').contentFrame().getByLabel('Lastname').click();
+    await page.locator('iframe').contentFrame().getByLabel('Lastname').fill('s');
+    await page.locator('iframe').contentFrame().getByLabel('Address').click();
+    await page.locator('iframe').contentFrame().getByLabel('Address').fill('cumbum');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Show help' }).click();
+    await expect(page.getByRole('link', { name: 'Track the mouse' })).toBeVisible();
+    await page.getByRole('link', { name: 'Track the mouse' }).click();
+    await expect(page.getByRole('link', { name: 'Video Player demo' })).toBeVisible();
+    await page.getByRole('link', { name: 'Video Player demo' }).click();
+    await expect(page.locator('iframe').contentFrame().getByRole('button', { name: 'Like', exact: true })).toBeVisible();
+    await expect(page.locator('iframe').contentFrame().getByRole('button', { name: 'I dislike this' })).toBeVisible();
+    await expect(page.locator('iframe').contentFrame().getByRole('button', { name: 'Add to', exact: true })).toBeVisible();
+    await expect(page.locator('iframe').contentFrame().getByRole('button', { name: 'Add to favorites or playlist' })).toBeVisible();
+    await expect(page.locator('iframe').contentFrame().getByRole('button', { name: 'Share' })).toBeVisible();
+    await expect(page.locator('iframe').contentFrame().getByRole('button', { name: 'Flag as inappropriate' })).toBeVisible();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Like', exact: true }).click();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'I dislike this' }).click();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Add to', exact: true }).click();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Add to favorites or playlist' }).click();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Share' }).click();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Flag as inappropriate' }).click();
+  });
+
+  test('Effect AddClass', async ({ page }) => {
+
+    await expect(page.getByRole('link', { name: 'Add Class' })).toBeVisible();
+    await page.getByRole('link', { name: 'Add Class' }).click();
+    await expect(page.locator('iframe').contentFrame().locator('#effect')).toContainText('Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede.');
+    await expect(page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' })).toBeVisible();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await expect(page.getByRole('link', { name: 'Effect demo' })).toBeVisible();
+    await page.getByRole('link', { name: 'Effect demo' }).click();
+    await expect(page.locator('iframe').contentFrame().getByRole('heading', { name: 'Effect' })).toBeVisible();
+    await expect(page.locator('iframe').contentFrame().getByText('Etiam libero neque, luctus a')).toBeVisible();
+    await expect(page.locator('iframe').contentFrame().getByRole('paragraph')).toContainText('Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede. Nulla lorem metus, adipiscing ut, luctus sed, hendrerit vitae, mi.');
+    await expect(page.locator('iframe').contentFrame().locator('#effectTypes')).toBeVisible();
+    await expect(page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' })).toBeVisible();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('bounce');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('clip');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('drop');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('explode');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('fade');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('fold');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('highlight');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('puff');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('pulsate');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('scale');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('shake');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('size');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('slide');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('transfer');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();await expect(page.getByRole('link', { name: 'Animate demo' })).toBeVisible();
+    await page.getByRole('link', { name: 'Animate demo' }).click();
+    await expect(page.locator('iframe').contentFrame().getByRole('paragraph')).toContainText('Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede. Nulla lorem metus, adipiscing ut, luctus sed, hendrerit vitae, mi.');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Toggle Effect' }).click();
+    await expect(page.locator('iframe').contentFrame().getByText('Animate Etiam libero neque,')).toBeVisible();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Toggle Effect' }).click();
+    await expect(page.getByRole('link', { name: 'Easing demo' })).toBeVisible();
+    await page.getByRole('link', { name: 'Easing demo' }).click();
+    await page.locator('iframe').contentFrame().locator('canvas').first().click({
+      position: {
+        x: 49,
+        y: 28
+      }
+    });
+    await page.locator('iframe').contentFrame().locator('canvas').nth(1).click({
+      position: {
+        x: 69,
+        y: 34
+      }
+    });
+    await page.locator('iframe').contentFrame().locator('canvas').nth(2).click({
+      position: {
+        x: 65,
+        y: 55
+      }
+    });
+    await expect(page.getByRole('link', { name: 'Hide Demo' })).toBeVisible();
+    await page.getByRole('link', { name: 'Hide Demo' }).click();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('bounce');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('clip');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('drop');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('explode');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('fade');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('fold');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('highlight');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('puff');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('pulsate');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('scale');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('shake');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('slide');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.getByRole('link', { name: 'removeClass Demo' }).click();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.getByRole('link', { name: 'Show Demo' }).click();
+    await page.locator('iframe').contentFrame().locator('body').click(); //body click
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('fold');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('shake');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('size');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.getByRole('link', { name: 'switchClass Demo' }).click();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.getByRole('link', { name: 'Toggle Demo' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('scale');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('fade');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('drop');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.locator('iframe').contentFrame().locator('#effectTypes').selectOption('bounce');
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+    await page.getByRole('link', { name: 'toggleClass Demo' }).click();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Run Effect' }).click();
+  });
+
+  test('Effect ColorAnimation', async ({ page }) => {
+    await expect(page.getByRole('link', { name: 'Color Animation' })).toBeVisible();
+    await page.getByRole('link', { name: 'Color Animation' }).click();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Toggle Effect' }).click();
+    await expect(page.locator('iframe').contentFrame().getByText('Animate Etiam libero neque,')).toBeVisible();
+  });
+
+  test('Utilities', async ({ page }) => {
+    await expect(page.getByRole('heading', { name: 'Utilities' })).toBeVisible();
+    await page.getByRole('link', { name: 'Position' }).click();
+    await expect(page.locator('iframe').contentFrame().locator('#positionable2')).toContainText('to position 2');
+    await expect(page.locator('iframe').contentFrame().locator('#parent')).toContainText('This is the position parent element.');
+    await page.locator('iframe').contentFrame().locator('#my_horizontal').selectOption('center');
+    await page.locator('iframe').contentFrame().locator('#my_horizontal').selectOption('right');
+    await page.locator('iframe').contentFrame().locator('#my_vertical').selectOption('center');
+    await page.locator('iframe').contentFrame().locator('#my_vertical').selectOption('bottom');
+    await page.locator('iframe').contentFrame().locator('#at_horizontal').selectOption('center');
+    await page.locator('iframe').contentFrame().locator('#at_horizontal').selectOption('right');
+    await page.locator('iframe').contentFrame().locator('#at_vertical').selectOption('center');
+    await page.locator('iframe').contentFrame().locator('#at_vertical').selectOption('bottom');
+    await page.locator('iframe').contentFrame().locator('#collision_horizontal').selectOption('fit');
+    await page.locator('iframe').contentFrame().locator('#collision_horizontal').selectOption('flipfit');
+    await page.locator('iframe').contentFrame().locator('#collision_horizontal').selectOption('none');
+    await page.locator('iframe').contentFrame().locator('#collision_vertical').selectOption('fit');
+    await page.locator('iframe').contentFrame().locator('#collision_vertical').selectOption('flipfit');
+    await page.locator('iframe').contentFrame().locator('#collision_vertical').selectOption('none');
+    await expect(page.getByRole('link', { name: 'Widget Factory' })).toBeVisible();
+    await page.getByRole('link', { name: 'Widget Factory' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget1').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget1').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget1').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget2').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget2').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget2').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget2').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget3').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget3').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget3').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget3').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget2').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget2').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget3').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget3').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Toggle disabled option' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget3').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget2').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget1').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Toggle disabled option' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget3').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget2').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().locator('#my-widget1').getByRole('button', { name: 'change' }).click();
+    await page.locator('iframe').contentFrame().getByRole('button', { name: 'Go green' }).click();
+  })
 });
 

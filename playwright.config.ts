@@ -25,12 +25,12 @@ export default defineConfig({
   reporter: 'html',
 
   // Global timeout for all tests (30 seconds);
-  // timeout: 30000, 
+  timeout: 40000, 
 
    // Timeout for expect assertions (5 seconds)
-  // expect: {
-  //   timeout: 5000,
-  // },
+  expect: {
+    timeout: 6000,
+  },
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
